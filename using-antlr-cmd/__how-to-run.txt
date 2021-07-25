@@ -1,0 +1,68 @@
+
+---- 0 ---- 
+//Always SET ENV vars. With CLASSPATH set, Java can find both the ANTLR tool and the runtime library.
+
+>run1-set-env-antlr-claspath.bat
+>run2-set-antlr4-Tool.bat
+>run3-set-grun-TestRig.bat
+
+
+---- 1 ---- 
+//generate antlr artifacts 
+//just generate listeners by default
+> antlr4  ShortestCobolGrammar.g4
+
+//or same via
+> java org.antlr.v4.Tool ShortestCobolGrammar.g4
+
+//or including visitors
+> antlr4 -visitor ShortestCobolGrammar.g4
+
+//or just excluding listener and including visitor
+> antlr4 -no-listener -visitor ShortestCobolGrammar.g4
+
+
+---- 2 ----
+//compile generated Java source files
+> javac ShortestCobolGrammar*.java
+  
+
+---- 3 ----
+// RUN   (r - rule name )
+>grun ShortestCobolGrammar cobolProgram -tree
+enter: 
+      IDENTIFICATION DIVISION.  
+       PROGRAM-ID. myWQ11rg.
+       PROCEDURE DIVISION. DISPLAY "Ilkip rogram". 
+
+>grun ShortestCobolGrammar cobolProgram -gui --diagnostics
+>grun ShortestCobolGrammar cobolProgram -gui
+
+//That ^D means EOF on unix; it's ^Z in Windows.
+
+>grun ShortestCobolGrammar cobolProgram -tree
+>grun ShortestCobolGrammar cobolProgram  -tokens
+
+--- options  
+-tokens prints out the token stream.
+-tree prints out the parse tree in LISP form.
+-gui displays the parse tree visually in a dialog box.
+-ps file.ps generates a visual representation of the parse tree in PostScript and
+stores it in file.ps. The parse tree figures in this chapter were generated
+with -ps.
+-encoding encodingname specifies the test rig input file encoding if the current
+locale would not read the input properly.
+-trace prints the rule name and current token upon rule entry and exit.
+-diagnostics turns on diagnostic messages during parsing.
+-SLL uses a faster but slightly weaker parsing strategy. 
+
+
+-- Generate for other languagse 
+>>antlr4  ShortestCobolGrammar.g4   (by default JAVA)
+>antlr4 -Dlanguage=Python3 ShortestCobolGrammar.g4
+>antlr4 -Dlanguage=CSharp ShortestCobolGrammar.g4
+>antlr4 -Dlanguage=JavaScript ShortestCobolGrammar.g4
+
+
+
+
