@@ -1,49 +1,51 @@
-
----- 0 ---- 
-//Always SET ENV vars. With CLASSPATH set, Java can find both the ANTLR tool and the runtime library.
+1. Always SET ENV vars first. With CLASSPATH set, Java can find both the ANTLR tool and the runtime library.
 
 >run1-set-env-antlr-claspath.bat
 >run2-set-antlr4-Tool.bat
 >run3-set-grun-TestRig.bat
 
 
----- 1 ---- 
-//generate antlr artifacts 
-//just generate listeners by default
+2. generate antlr artifacts, generates listeners by default
 > antlr4  ShortestCobolGrammar.g4
 
 //or same via
 > java org.antlr.v4.Tool ShortestCobolGrammar.g4
 
-//or including visitors
+//or to generate both: visitors and listeners 
 > antlr4 -visitor ShortestCobolGrammar.g4
 
-//or just excluding listener and including visitor
+//or just generate visitor and exclude listener 
 > antlr4 -no-listener -visitor ShortestCobolGrammar.g4
 
+//or to generate for other languages 
+>antlr4  ShortestCobolGrammar.g4   (by default JAVA)
+>antlr4 -Dlanguage=Python3 ShortestCobolGrammar.g4
+>antlr4 -Dlanguage=CSharp ShortestCobolGrammar.g4
+>antlr4 -Dlanguage=JavaScript ShortestCobolGrammar.g4
 
----- 2 ----
-//compile generated Java source files
+
+3. compile generated Java source files
 > javac ShortestCobolGrammar*.java
   
 
----- 3 ----
-// RUN   (r - rule name )
->grun ShortestCobolGrammar cobolProgram -tree
-enter: 
-      IDENTIFICATION DIVISION.  
-       PROGRAM-ID. myWQ11rg.
-       PROCEDURE DIVISION. DISPLAY "Ilkip rogram". 
+4. RUN   (parser rule name, e.g cobolProgram  )
+>grun ShortestCobolGrammar cobolProgram -tokens
 
+enter: 
+
+IDENTIFICATION DIVISION. 
+PROGRAM-ID. my-shortest-cobol.
+PROCEDURE DIVISION. DISPLAY "Shortest  COBOL  Program".
+    
+or
 >grun ShortestCobolGrammar cobolProgram -gui --diagnostics
 >grun ShortestCobolGrammar cobolProgram -gui
+>grun ShortestCobolGrammar cobolProgram -tree
 
 //That ^D means EOF on unix; it's ^Z in Windows.
 
->grun ShortestCobolGrammar cobolProgram -tree
->grun ShortestCobolGrammar cobolProgram  -tokens
-
---- options  
+--- to see grun options
+>grun  
 -tokens prints out the token stream.
 -tree prints out the parse tree in LISP form.
 -gui displays the parse tree visually in a dialog box.
@@ -57,11 +59,6 @@ locale would not read the input properly.
 -SLL uses a faster but slightly weaker parsing strategy. 
 
 
--- Generate for other languagse 
->>antlr4  ShortestCobolGrammar.g4   (by default JAVA)
->antlr4 -Dlanguage=Python3 ShortestCobolGrammar.g4
->antlr4 -Dlanguage=CSharp ShortestCobolGrammar.g4
->antlr4 -Dlanguage=JavaScript ShortestCobolGrammar.g4
 
 
 

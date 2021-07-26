@@ -1,0 +1,4 @@
+IDENTIFICATION DIVISION. 
+PROGRAM-ID. my-shortest-cobol.
+PROCEDURE DIVISION. DISPLAY "Shortest  COBOL  Program".
+  

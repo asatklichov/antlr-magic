@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
-		<antlr.version>4.7.2</antlr.version>
+		<antlr.version>4.9.2</antlr.version>
 		<junit5.version>5.6.2</junit5.version>
 		<lsp4j.version>0.5.0</lsp4j.version>
 	</properties>
@@ -23,7 +23,6 @@
 			<artifactId>antlr4-runtime</artifactId>
 			<version>${antlr.version}</version>
 		</dependency>
-
 		<!-- for LSP support -->
 		<dependency>
 			<groupId>org.eclipse.lsp4j</groupId>

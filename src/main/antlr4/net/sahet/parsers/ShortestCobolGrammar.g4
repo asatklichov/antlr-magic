@@ -8,7 +8,7 @@ programUnit : identificationDivision procedureDivision?;
 
 identificationDivision : IDENTIFICATION DIVISION DOT_FS programId;
 
-programId : PROGRAM_ID DOT_FS programName DOT_FS;
+programId : PROGRAM_ID DOT_FS programName DOT_FS?;
 
 programName : IDENTIFIER+;
 
@@ -16,7 +16,7 @@ procedureDivision : PROCEDURE DIVISION DOT_FS displayStatement?;
 
 displayStatement : DISPLAY DOUBLEQUOTE message DOUBLEQUOTE DOT_FS;
 
-message : (IDENTIFIER WHITESPACE IDENTIFIER)+;
+message : IDENTIFIER+;
 //message : (WORD | NUMBER | WHITESPACE)+;
 
 /* lexer rules */
@@ -32,7 +32,6 @@ IDENTIFIER : ([a-zA-Z0-9]+ [-_a-zA-Z0-9]*);
 INT : (PLUSCHAR | MINUSCHAR)? [0-9]+;
 NUMBER : DIGIT+ ([.,] DIGIT+)?;
 WORD : (LOWERCASE | UPPERCASE | '_')+ ;
-WHITESPACE : (' ' | 't') ;
 
 //symbols
 DOT_FS : DOT ('\r' | '\n' | '\f' | '\t' | ' ')+ | DOT EOF;
@@ -43,6 +42,7 @@ PLUSCHAR : '+';
 
 // Define whitespace rule 
 WS : [ \t\f;]+ -> channel(HIDDEN);
+//WHITESPACE : (' ' | 't') ;
 NEWLINE : '\r'? '\n' -> channel(HIDDEN);
 
 // case insensitive characters
