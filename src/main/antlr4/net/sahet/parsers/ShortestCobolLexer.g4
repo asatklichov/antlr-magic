@@ -1,6 +1,6 @@
 lexer grammar ShortestCobolLexer;
 
-/* lexer rules */
+/* lexer rules defined with uppercase */
 //language keywords
 DISPLAY : D I S P L A Y;
 DIVISION : D I V I S I O N;

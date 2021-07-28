@@ -1,6 +1,7 @@
 parser grammar ShortestCobolParser;
+options {tokenVocab = ShortestCobolLexer; }
 
-/* parser rules */
+/* parser rules defined with lowercase letters */
 cobolProgram : programUnit EOF;
 
 programUnit : identificationDivision procedureDivision?;
