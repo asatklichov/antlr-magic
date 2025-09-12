@@ -1,0 +1,44 @@
+1. Always SET ENV vars first. With CLASSPATH set, Java can find both the ANTLR tool and the runtime library.
+
+>run1-set-env-antlr-claspath.bat
+>run2-set-antlr4-Tool.bat
+>run3-set-grun-TestRig.bat
+
+
+1) 
+> antlr4 -visitor Talk.g4 
+
+2) 
+>javac Talk*.java
+
+
+3) RUN   (r - rule name ).  grun is the testing tool, Talk is the name of the grammar, Talk the rule that we want to parse
+> grun Talk talk
+dsfdf SAYS: hello @MRalo
+^Z
+line 1:22 token recognition error at: '\r'
+line 1:23 token recognition error at: '\n'
+line 1:6 mismatched input 'SYAS' expecting {SAYS, SHOUTS}
+line 1:11 no viable alternative at input ': 
+
+//or
+>grun Talk talk -tokens
+grun Talk talk -tokens
+dsfdf SAYS: hello @MRalo
+
+
+>grun Talk talk -tree 
+>grun Talk Talk -gui --diagnostics 
+
+>grun Talk talk -gui
+dsfdf SAYS: hello @MRalo
+ 
+//That ^D means EOF on unix; it's ^Z in Windows.
+ 
+ 
+------------ JS ---
+>antlr4 -Dlanguage=JavaScript Talk.g4
+
+   
+
+   

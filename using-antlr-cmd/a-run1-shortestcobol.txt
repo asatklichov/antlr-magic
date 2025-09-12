@@ -36,7 +36,11 @@ enter:
 IDENTIFICATION DIVISION. 
 PROGRAM-ID. my-shortest-cobol.
 PROCEDURE DIVISION. DISPLAY "Shortest  COBOL  Program".
+
+//or use input file 
+grun ShortestCobolGrammar cobolProgram -tokens shortest-prog.txt
     
+
 or
 >grun ShortestCobolGrammar cobolProgram -gui --diagnostics
 >grun ShortestCobolGrammar cobolProgram -gui

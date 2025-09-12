@@ -1,0 +1,32 @@
+ 
+0) -- ENV SET.  With CLASSPATH set, Java can find both the ANTLR tool and the runtime library.
+
+>run1-set-env-antlr-claspath.bat
+>run2-set-antlr4-Tool.bat
+>run3-set-grun-TestRig.bat
+
+
+1) 
+> antlr4  ObjectTypes.g4  
+
+2) 
+> javac ObjectTypes*.java 
+  
+
+3) RUN   (with rule name )
+>grun ObjectTypes object -tokens
+{23,3434,232, {13,31}} 
+
+or
+
+{23,3434,232, {13,31}, "sdsd", 32, {"sd", 23}}
+
+or 
+
+{99, 3, 451, } 
+
+>grun ObjectTypes object -tokens -tree -gui
+{23,3434,232, {13,31}, "sdsd", 32, {"sd", 23}}
+ 
+
+
