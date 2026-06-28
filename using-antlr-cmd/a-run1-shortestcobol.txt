@@ -1,4 +1,5 @@
-1. Always SET ENV vars first. With CLASSPATH set, Java can find both the ANTLR tool and the runtime library.
+1. Always SET ENV vars first. With CLASSPATH set, 
+Java can find both the ANTLR tool and the runtime library.
 
 >run1-set-env-antlr-claspath.bat
 >run2-set-antlr4-Tool.bat
